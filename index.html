@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- tailwindcss CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container w-full bg-gray-800 grid h-screen place-items-center">
+        <div class="calc bg-gray-200 p-3 rounded-lg  ">
+            <div class=" w-80 input flex flex-col  ">
+                <label for="bill" class="block mb-2 text-sm font-medium text-gray-900 ">bill</label>
+                <input type="number" id="bill"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="$0.00" required>
+            </div>
+            <div class=" w-80 input flex flex-col mt-4 ">
+                <label for="bill" class="block mb-2 text-sm font-medium text-gray-900 ">tib</label>
+                <input type="number" id="tip"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="$0.00" required>
+            </div>
+            <div class=" w-80 input flex flex-col mt-4 ">
+                <label for="bill" class="block mb-2 text-sm font-medium text-gray-900 ">people</label>
+                <div class="incDec flex items-center">
+                    <button type="button" id="increase"
+                        class="font-medium bg-blue-500 rounded-full w-8 h-8 text-white text-center">+</button>
+                    <div id="peopleAmount" class="peopleValue mx-2">0</div>
+                    <button type="button" id="decrease"
+                        class="bg-blue-500 font-medium rounded-full w-8 h-8 text-white text-md text-center">-</button>
+                    <span class="total bg-gray-300 ml-auto text-lg p-2 text-dark rounded-lg" id="total">0</span>
+                </div>
+
+            </div>
+            <button type="button" id="calcTotal"
+                class="text-white text-md mt-3 w-full bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 ">let's
+                calc</button>
+
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+
+</html>
