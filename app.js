@@ -1,47 +1,48 @@
 //VARIAABLES 
 
+// Convert let to Const for static variable
 const bill = document.querySelector("#bill");
 const tip = document.querySelector("#tip");
 const increase = document.querySelector("#increase");
 const decrease = document.querySelector("#decrease");
-let peopleAmount = document.querySelector("#peopleAmount");
-let calcTotal = document.querySelector("#calcTotal");
-let total = document.querySelector("#total");
+const peopleAmount = document.querySelector("#peopleAmount");
+const calcTotal = document.querySelector("#calcTotal");
+const total = document.querySelector("#total");
 let count = 0;
 
 
 // count bill final total
-let getTotal = () => {
-  let tipAmount = tip.value / 100;
-  let billAmount = bill.value;
-  if (tipAmount !== "" && billAmount !== "") {
-    let getTotalBill = (billAmount * tipAmount) / count;
-    total.innerHTML = `${getTotalBill} $`;
+const getTotal = () => {
+  // Convert String to Number
+  const tipAmount = parseFloat(tip.value) / 100;
+  const billAmount = parseFloat(bill.value);
+
+  // Guard clause for invalid inputs
+  if (isNaN(tipAmount) || isNaN(billAmount) || count <= 0) {
+    total.innerHTML = "Please enter valid inputs";
+    return;
   }
+
+  const getTotalBill = (billAmount * tipAmount) / count;
+
+  // add toFixed
+  total.innerHTML = `${getTotalBill.toFixed(2)} $`;
 };
 
-
-// button + for increament value of people count
-const handleIncrement = () => {
-  count++;
-  getTotal();
-
-  peopleAmount.innerHTML = count;
-};
-
-
-// button + for decremnt value of people count
-const handleDecrement = () => {
-  if (count >= 1) {
+// Button Function to incre and decre people count
+const handlePeopleCount = (action) => {
+  if (action === 'increment') {
+    count++;
+  } else if (action === 'decrement' && count > 1) {
     count--;
-    getTotal();
   }
 
   peopleAmount.innerHTML = count;
+  getTotal();
 };
 
-
-// the event btn for clicking buttons by using eventListener
+// Event listeners for button clicks
+increase.addEventListener("click", () => handlePeopleCount('increment'));
+decrease.addEventListener("click", () => handlePeopleCount('decrement'));
 calcTotal.addEventListener("click", getTotal);
-increase.addEventListener("click", handleIncrement);
-decrease.addEventListener("click", handleDecrement);
+
